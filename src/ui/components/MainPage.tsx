@@ -46,15 +46,6 @@ export function MainPage() {
                     </StatusPanel>
 
                     <SubscriptionsPanel />
-
-                    {/*<a
-                        href="./pbg_oracle.apk"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Install Android native
-                    </a>*/}
-
                     {/*<FeedPanel />*/}
                 </>
             )}

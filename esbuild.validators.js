@@ -1,8 +1,9 @@
 import { dirname, join } from "node:path"
 import { build } from "esbuild"
+import { fileURLToPath } from "node:url"
 
 async function main() {
-    const repoRoot = join(dirname(process.argv[1]), "./")
+    const repoRoot = dirname(fileURLToPath(import.meta.url))
 
     await build({
         bundle: true,
@@ -13,7 +14,7 @@ async function main() {
         banner: {},
         platform: "node",
         minify: false,
-        outfile: join(repoRoot, "../dist/aws-validator.js"),
+        outfile: join(repoRoot, "dist", "aws-validator.js"),
         entryPoints: [join(repoRoot, "src", "validators", "aws.ts")],
         define: {},
         tsconfig: join(repoRoot, "tsconfig.json")

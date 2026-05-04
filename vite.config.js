@@ -1,14 +1,14 @@
 import { dirname, join } from "node:path"
 import { execSync } from "node:child_process"
+import { fileURLToPath } from "node:url"
 import { defineConfig } from "vite"
 import makeReactPlugin from "@vitejs/plugin-react"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 
-// process.argv[1] is the vite binary
-const repoRoot = join(dirname(process.argv[1]), "../../")
-const srcDir = join(repoRoot, "./src/ui")
-const assetsDir = join(repoRoot, "./assets")
-const dstDir = join(repoRoot, "../dist")
+const repoRoot = dirname(fileURLToPath(import.meta.url))
+const srcDir = join(repoRoot, "src", "ui")
+const assetsDir = join(repoRoot, "assets")
+const dstDir = join(repoRoot, "dist")
 
 const version = execSync("git rev-parse --short HEAD").toString().slice(0, 6)
 

@@ -13,10 +13,15 @@ Installation steps:
 1. Go to `https://pbgtoken.github.io/oracle`
 2. Optionally you can install this app as a PWA on your smart phone:
    - iOS: open site with Safari, and in the share menu, look for a button named 'Add to home screen'
-   - Android: open with any browser, and in the main menu, look for a button named 'Install to home screen' or similar
+   - Other platforms: use your browser's install or add-to-home-screen option
 3. Configure your private key using 24 words
 4. Configure your AWS account keys
 5. Click 'Push validator'
+
+## Deployment
+
+GitHub Pages must be enabled in the repository settings for the Pages deployment workflow to publish the site correctly.
+In GitHub, open `Settings -> Pages` for this repository and make sure GitHub Pages is activated before relying on the deploy action.
 
 ## AWS access keys
 
@@ -55,9 +60,6 @@ The PBG oracle app has seen several iterations:
 
 1. Progressive Web App (PWA) with a service-worker continuously runs, and using the WebPush API to get notified when transactions must be signed. Disadvantages:
     - Doesn't work on iOS because background-processes are severely throttled
-    - Only reliably works on Android using Firefox, but even there, after two weeks of inactivity, the background-process is throttled
+    - Browser background processing is unreliable over long periods of inactivity
     - WebPush API has a typical latency of 10 seconds
-2. Android native app which continously polls for transactions to be signed. Disadvantages:
-    - Phone still needs to be charging 100% of the time, which is a strain on the battery (my phone battery become swollen after 6 months of continuous charging)
-    - A large amount of code needs to duplicated in Java
-3. Current: PWA that pushes JavaScript to a AWS serverless function (other cloud providers will be implemented later), and registers the URL of the serverless function with the PBGToken backend. The serverless function handles transaction validation and signing.
+2. Current: PWA that pushes JavaScript to a AWS serverless function (other cloud providers will be implemented later), and registers the URL of the serverless function with the PBGToken backend. The serverless function handles transaction validation and signing.
