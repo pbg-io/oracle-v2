@@ -24,7 +24,7 @@ jobs:
                   node-version: 20
 
             - run: npm ci
-            - run: ./build.sh
+            - run: npm run build
 
             - name: Upload artifacts
               uses: actions/upload-pages-artifact@v3
