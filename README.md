@@ -21,7 +21,8 @@ Installation steps:
 ## Deployment
 
 GitHub Pages must be enabled in the repository settings for the Pages deployment workflow to publish the site correctly.
-In GitHub, open `Settings -> Pages` for this repository and make sure GitHub Pages is activated before relying on the deploy action.
+In GitHub, open `Settings -> Pages` for this repository, make sure GitHub Pages is activated, and set the source to `GitHub Actions`.
+If Pages is left on branch-based publishing, GitHub can serve repository content such as `README.md` instead of the built app from `./dist`.
 
 ## AWS access keys
 
